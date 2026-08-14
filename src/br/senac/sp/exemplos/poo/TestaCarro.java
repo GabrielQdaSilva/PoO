@@ -9,5 +9,6 @@ public class TestaCarro {
         for (int i = 0; i < 100; i++) {
             car.acelerar();
         }
+        System.out.println(car.buzinar());
     }
 }
