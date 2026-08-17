@@ -8,7 +8,10 @@ public class TestaCarro {
         car.modelo = "Fusca";
         for (int i = 0; i < 100; i++) {
             car.acelerar();
+            car.trocarMarcha();
+
         }
+
         System.out.println(car.buzinar());
     }
 }
