@@ -6,6 +6,24 @@ public class Conta {
     private double saldo;
     public Cliente cliente;
 
+    //criar dois construtores além do padrõ
+    public void Conta1(String agencia, String numero, double depositoInicial) {
+        this.agencia = agencia;
+        this.numeroConta = numero;
+        this.saldo = depositoInicial;
+        if (depositoInicial > 0) {
+            this.depositar(depositoInicial);
+            System.out.println("Conta criada com sucesso!");
+        }
+    }
+
+    public Conta() {
+        this.cliente = new Cliente();
+        this.agencia = "0001";
+        this.numeroConta = "0000";
+        this.saldo = 0;
+    }
+
     public boolean sacar(double valor) {
         if (saldo >= valor) {
             saldo -= valor;

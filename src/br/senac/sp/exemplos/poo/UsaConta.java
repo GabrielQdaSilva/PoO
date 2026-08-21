@@ -17,6 +17,7 @@ public class UsaConta {
         Conta c2 = new Conta();
         c2.agencia = "123-4";
         c2.numeroConta = "7890";
+        Cliente cl2 = new Cliente("Ana", "123.456.789-00");
         c2.cliente = cl1;
         c1.depositar(100000);
         c1.sacar(1000);
