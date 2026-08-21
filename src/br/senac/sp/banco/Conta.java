@@ -6,17 +6,6 @@ public class Conta {
     private double saldo;
     public Cliente cliente;
 
-    //criar dois construtores além do padrõ
-    public void Conta1(String agencia, String numero, double depositoInicial) {
-        this.agencia = agencia;
-        this.numeroConta = numero;
-        this.saldo = depositoInicial;
-        if (depositoInicial > 0) {
-            this.depositar(depositoInicial);
-            System.out.println("Conta criada com sucesso!");
-        }
-    }
-
     public Conta() {
         this.cliente = new Cliente();
         this.agencia = "0001";
@@ -24,16 +13,42 @@ public class Conta {
         this.saldo = 0;
     }
 
-    public boolean sacar(double valor) {
-        if (saldo >= valor) {
-            saldo -= valor;
-            return true;
+    // criar dois construtores além do padrõ
+    public void Conta1(String agencia, String numero, double depositoInicial) {
+        this.agencia = agencia;
+        this.numeroConta = numero;
+        this.saldo = depositoInicial;
+
+        if (depositoInicial > 0) {
+            this.depositar(depositoInicial);
+            System.out.println("Conta criada com sucesso!");
         }
-        return false;
     }
 
     public void depositar(double valor) {
         saldo += valor;
+    }
+
+    public String info() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("--- Resumo ---");
+        builder.append("\nAgência: " + agencia);
+        builder.append("\nNúmero:" + numeroConta);
+        builder.append("\nSaldo:" + saldo);
+        builder.append("\nCliente:" + cliente.nome);
+
+        return builder.toString();
+    }
+
+    public boolean sacar(double valor) {
+        if (saldo >= valor) {
+            saldo -= valor;
+
+            return true;
+        }
+
+        return false;
     }
 
     public void transferir(double valor, Conta destino) {
@@ -41,15 +56,7 @@ public class Conta {
             destino.depositar(valor);
         }
     }
-
-    public String info() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("--- Resumo ---");
-        builder.append("\nAgência: " + agencia);
-        builder.append("\nNúmero:" + numeroConta);
-        builder.append("\nSaldo:" + saldo);
-        builder.append("\nCliente:" + cliente.nome);
-        return builder.toString();
-    }
-
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com
