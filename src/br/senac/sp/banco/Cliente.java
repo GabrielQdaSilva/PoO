@@ -5,6 +5,15 @@ public class Cliente {
     private String cpf;
     private static int contador;
     private Sexo sexo;
+    private TipoConta tipo;
+
+    public TipoConta getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoConta tipo) {
+        this.tipo = tipo;
+    }
 
     public Sexo getSexo() {
         return sexo;
