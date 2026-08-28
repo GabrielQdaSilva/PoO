@@ -8,31 +8,28 @@ public class UsaConta {
 
         // cria objeto conta
         Conta c1 = new Conta();
-
-        c1.agencia = "123-4";
-        c1.numeroConta = "5678";
-
+        c1.setAgencia("123-4");
+        c1.setNumero("5678");
+        // cria objeto cliente
         Cliente cl1 = new Cliente();
+        cl1.setNome("Murilo Torres");
+        cl1.setCpf("059.116.568-68");
+        // associar a conta ao cliente
+        c1.setCliente(cl1);
+        // cria objeto cliente
+        Cliente cl2 = new Cliente("Ana", "056.555.888-99");
+        // cria o objeto conta
+        Conta c2 = new Conta("123-4", "7890", cl2);
 
-        cl1.nome = "Murilo Torres";
-        cl1.cpf = "123.456.789-00";
-        c1.cliente = cl1;
+        c1.depositar(5000);
+        c1.sacar(500);
+        c1.transferir(500, c2);
 
-        Conta c2 = new Conta();
+        System.out.println(c1.getInfo());
+        System.out.println(c2.getInfo());
 
-        c2.agencia = "123-4";
-        c2.numeroConta = "7890";
-
-        Cliente cl2 = new Cliente("Ana", "123.456.789-00");
-
-        c2.cliente = cl1;
-        c1.depositar(100000);
-        c1.sacar(1000);
-        c1.transferir(1000, c2);
-        System.out.println(c1.info());
-        System.out.println(c2.info());
+        c1.getCliente().setNome("Novo nome");
+        System.out.println(c1.getCliente().getCpf());
     }
 }
 
-
-//~ Formatted by Jindent --- http://www.jindent.com

@@ -1,54 +1,84 @@
 package br.senac.sp.banco;
 
+import java.util.Scanner;
+
 public class Conta {
-    public String agencia;
-    public String numeroConta;
+    private String agencia;
+    private String numero;
     private double saldo;
-    public Cliente cliente;
+    private Cliente cliente;
+
+
+
+    /**
+     * @return the agencia
+     */
+    public String getAgencia() {
+        return agencia;
+    }
+
+    /**
+     * @param agencia the agencia to set
+     */
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    /**
+     * @return the numero
+     */
+    public String getNumero() {
+        return numero;
+    }
+
+    /**
+     * @param numero the numero to set
+     */
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public double getSaldo() {
+        return this.saldo;
+    }
 
     public Conta() {
-        this.cliente = new Cliente();
-        this.agencia = "0001";
-        this.numeroConta = "0000";
-        this.saldo = 0;
     }
 
-    // criar dois construtores além do padrõ
-    public void Conta1(String agencia, String numero, double depositoInicial) {
+    public Conta(String agencia, String numero) {
         this.agencia = agencia;
-        this.numeroConta = numero;
-        this.saldo = depositoInicial;
-
-        if (depositoInicial > 0) {
-            this.depositar(depositoInicial);
-            System.out.println("Conta criada com sucesso!");
-        }
+        this.numero = numero;
     }
 
-    public void depositar(double valor) {
-        saldo += valor;
-    }
-
-    public String info() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("--- Resumo ---");
-        builder.append("\nAgência: " + agencia);
-        builder.append("\nNúmero:" + numeroConta);
-        builder.append("\nSaldo:" + saldo);
-        builder.append("\nCliente:" + cliente.nome);
-
-        return builder.toString();
+    public Conta(String agencia, String numero, Cliente cliente) {
+        this(agencia, numero);
+        this.cliente = cliente;
     }
 
     public boolean sacar(double valor) {
         if (saldo >= valor) {
             saldo -= valor;
-
             return true;
         }
-
         return false;
+    }
+
+    public void depositar(double valor) {
+        saldo += valor;
     }
 
     public void transferir(double valor, Conta destino) {
@@ -56,7 +86,17 @@ public class Conta {
             destino.depositar(valor);
         }
     }
+
+    public String getInfo() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("--- Resumo ---")
+                .append("\nAgência: ")
+                .append(agencia)
+                .append("\nNúmero: ")
+                .append(numero)
+                .append("\nSaldo: R$ ")
+                .append(String.format("%5.2f", saldo))
+                .append("\nCliente: " + cliente.getNome());
+        return builder.toString();
+    }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
